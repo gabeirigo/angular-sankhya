@@ -1,0 +1,78 @@
+<div class="content_page">
+
+  <header>
+    <h2>Filtre sua pesquisa</h2>
+  </header>
+
+  <div class="content_page_body">
+    <div class="text-center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-outline-dark btn-sm" [class.active]="selecionaFiltro == 'categoria'" (click)="selecionaFiltro = 'categoria'">
+          <input type="radio" name="tipoFiltro" class="tipoFiltro" id="categoria" autocomplete="off" checked> Categoria
+        </label>
+        <label class="btn btn-outline-dark btn-sm" [class.active]="selecionaFiltro == 'titulo'" (click)="selecionaFiltro = 'titulo'">
+          <input type="radio" name="tipoFiltro" class="tipoFiltro" id="titulo" autocomplete="off"> Título
+        </label>
+        <label class="btn btn-outline-dark btn-sm" [class.active]="selecionaFiltro == 'autor'" (click)="selecionaFiltro = 'autor'">
+          <input type="radio" name="tipoFiltro" class="tipoFiltro" id="autor" autocomplete="off"> Autor
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div [ngSwitch]="selecionaFiltro">
+
+    <!-- FILTRO POR TÍTULO -->
+    <div class="input_filter filter_titulo" *ngSwitchCase="'titulo'">
+      <input type="text" pInputText placeholder="Pesquisa pelo título" [(ngModel)]="filtroTitulo" />
+      <div class="text-center">
+        <a class="btn btn-info btn-sm" routerLink="/artigos" [queryParams]="{qTitulo: filtroTitulo}">
+          <app-icons icon="search" marginText="right"></app-icons>
+          Pesquisar
+        </a>
+
+        <a class="btn btn-danger btn-sm" routerLink="/">
+          <app-icons icon="times" marginText="right"></app-icons>
+          Limpar Filtro
+        </a>
+      </div>
+    </div>
+
+   <!-- FILTRO POR TÍTULO -->
+   <div class="input_filter filter_autor" *ngSwitchCase="'autor'">
+      <input type="text" pInputText placeholder="Pesquisa pelo autor" [(ngModel)]="filtroAutor" />
+      <div class="text-center">
+        <a class="btn btn-info btn-sm" routerLink="/artigos" [queryParams]="{qAutor: filtroAutor}">
+          <app-icons icon="search" marginText="right"></app-icons>
+          Pesquisar
+        </a>
+
+        <a class="btn btn-danger btn-sm" routerLink="/">
+          <app-icons icon="times" marginText="right"></app-icons>
+          Limpar Filtro
+        </a>
+
+      </div>
+    </div>
+
+    <!-- FILTRO POR CATEGORIA -->
+    <div class="input_filter filter_categoria" *ngSwitchDefault>
+      <p-dropdown [options]="categorias" [(ngModel)]="categoriaFiltro"></p-dropdown>
+      <div class="text-center">
+
+        <a class="btn btn-info btn-sm" routerLink="/artigos" [queryParams]="{categoria: categoriaFiltro}">
+          <app-icons icon="search" marginText="right"></app-icons>
+          Pesquisar
+        </a>
+
+        <a class="btn btn-danger btn-sm" routerLink="/">
+          <app-icons icon="times" marginText="right"></app-icons>
+          Limpar Filtro
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

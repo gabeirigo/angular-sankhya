@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+  background: #f3f6f9;
+}
+
+form {
+  width: 100%;
+}
+
+.content_page {
+  padding: 30px;
+  background: #FFF;
+  margin: 30px 0;
+  width: 100%;
+}
+
+.content_page header {
+  padding: 0px 12px 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.content_page header h2 {
+  color: #555;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.content_page .content_page_body {
+  padding: 30px 0;
+}
+
+/* TABLE */
+.ui-table .ui-table-thead>tr>th, .ui-table .ui-table-tbody>tr>td, .ui-table .ui-table-tfoot>tr>td {
+  padding: 0.7rem;
+  font-size: 0.95rem;
+}
+
+.ui-table .ui-table-thead > tr > th {
+  border: none;
+  border-bottom: 2px solid #eee;
+  background: #FFF;
+  color: #555;
+  font-size: 0.95rem;
+}
+.ui-table .ui-table-tbody > tr > td {
+  border: 1px solid #eee;
+}
+
+/* PAGINATOR */
+.ui-table .ui-paginator-bottom {
+  background: transparent;
+  border: none;
+  padding-top: 1rem;
+}
+
+.ui-paginator .ui-paginator-page {
+  padding: 0.3rem 0.75rem;
+}
+
+.ui-paginator .ui-paginator-page, .ui-paginator .ui-paginator-pages, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-last, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-prev, .ui-paginator .ui-paginator-current {
+  padding: 0.3rem 0.75rem;
+}
+
+.ui-paginator .ui-paginator-page.ui-state-active {
+  background: #091e3d;
+  border-color: #091e3d;
+}
+
+.ui-paginator a:not(.ui-state-disabled):not(.ui-state-active):hover {
+  border-color: #eee;
+}
+
+.ui-paginator-page.ui-corner-all,
+.ui-paginator-first.ui-corner-all,
+.ui-paginator-last.ui-corner-all,
+.ui-paginator-next.ui-corner-all,
+.ui-paginator-prev.ui-corner-all {
+  border-radius: 50px;
+}
+
+/* INPUTS, SELECT, TEXTAREA */
+.ui-inputtext {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* dropdown */
+.ui-dropdown {
+  width:100% !important;
+}
+
+.ui-state-highlight {
+  background: #091e3d;
+}
+
+.ui-dropdown-panel .ui-dropdown-list {
+  padding: 0;
+}
+
+.ui-dropdown-panel .ui-dropdown-item {
+  padding: 0.35rem;
+}
+
+.ui-dropdown-item.ui-corner-all {
+  border-radius: 0 ;
+}
+
+.ui-dropdown .ui-dropdown-trigger {
+  padding: .4rem .25rem;
+}
+
+/* FORMS */
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #777;
+}
+
+/* SECTION_TITLE */
+.section_title {
+  padding: 20px 10px !important;
+  display: block;
+}
+
+.section_title h2 {
+  font-size: 2.1rem !important;
+  font-weight: 300 !important;
+  color: #777;
+}
+
+
+

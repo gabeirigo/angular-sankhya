@@ -1,0 +1,36 @@
+.comentarios {
+  margin-top: 30px;
+  background: #f4f4f4;
+  padding: 30px;
+}
+
+.comentarios h2{
+  font-weight: 400;
+}
+
+.comentarios .form-group{
+  margin-top: 10px;
+}
+
+.comentarios .form-group input{
+  margin-bottom: 10px;
+}
+
+
+.comentarios .comentario_individual {
+  padding: 15px;
+  border-left: 5px solid #ddd;
+  background: #e9e9e9;
+  margin: 1.2rem 0;
+}
+
+.comentarios .comentario_individual h3 {
+  font-size: 1.1rem;
+  color: #091e3d;
+}
+
+.comentarios .comentario_individual p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}

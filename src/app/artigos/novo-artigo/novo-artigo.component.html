@@ -1,0 +1,57 @@
+<app-header>
+  <a href="javascript:history.back()" class="btn btn-info">
+    <app-icons icon="undo" marginText="right"></app-icons>
+    Voltar
+  </a>
+</app-header>
+
+<app-alert *ngIf="message" color="{{colorMessage}}">{{message}}</app-alert>
+
+<div class="container">
+
+  <div class="row">
+
+    <section class="content_page">
+
+      <header>
+        <h2 *ngIf="!artigo.id; else title_edit">Novo Artigo</h2>
+        <ng-template #title_edit>
+          <h2>Editar Artigo</h2>
+        </ng-template>
+      </header>
+
+      <div class="content_page_body">
+        <form class="form-horizontal w-100" (submit)="save()">
+
+          <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" pInputText placeholder="Coloque o título aqui" [(ngModel)]='artigo.titulo' id="titulo" name="titulo" required />
+          </div>
+          <div class="form-group">
+              <label for="autor">Autor:</label>
+            <input type="text" pInputText placeholder="Coloque o nome do autor aqui" [(ngModel)]='artigo.autor' id="autor" name="autor" required />
+          </div>
+          <div class="form-group">
+            <label for="conteudo">Conteúdo:</label>
+
+            <!-- <p-editor [(ngModel)]="text" [style]="{'height':'320px'}" [(ngModel)]='artigo.conteudo' id="conteudo" name="conteudo"></p-editor> -->
+            <textarea pInputTextarea placeholder="Coloque aqui o conteúdo do artigo" [(ngModel)]='artigo.conteudo' id="conteudo" name="conteudo" [rows]="5" required ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <p-dropdown [className]="w-100" [options]="categorias" [(ngModel)]='artigo.categoria' id="categoria" name="categorias" [autoWidth]="false" placeholder="Selecione uma categoria" required ></p-dropdown>
+          </div>
+
+          <app-button type="submit" color="info" icon="check">
+            <app-icons icon="check" textMargin="right"></app-icons>
+            Salvar
+          </app-button>
+
+        </form>
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

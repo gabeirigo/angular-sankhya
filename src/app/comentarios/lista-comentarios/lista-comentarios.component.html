@@ -1,0 +1,12 @@
+<section class="comentarios">
+
+  <header>
+    <h2>Comentários</h2>
+  </header>
+
+  <div class="comentario_individual" *ngFor="let comentario of artigo.comentarios">
+    <h3>{{comentario.autor}}</h3>
+    <p>{{comentario.texto}}</p>
+  </div>
+
+  <app-novo-comentario></app-novo-comentario>

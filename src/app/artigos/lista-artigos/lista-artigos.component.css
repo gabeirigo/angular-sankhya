@@ -1,0 +1,13 @@
+.input_filter_titulo,
+.input_filter_autor {
+  display: none;
+}
+
+.input_filter .btn {
+  margin-top: 20px;
+}
+
+td .btn {
+  font-size: 0.7rem;
+  margin: 2.5px 0;
+}

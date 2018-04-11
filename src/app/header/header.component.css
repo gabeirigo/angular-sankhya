@@ -1,0 +1,11 @@
+.main_header {
+  padding: 20px 0;
+  background: #091e3d;
+}
+
+.main_header header h2{
+  font-size: 1.2rem;
+  color: #FFF;
+  font-weight: 400;
+  margin: 0 !important;
+}

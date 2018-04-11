@@ -1,0 +1,161 @@
+<app-header>
+  <app-button color="info" routerLink="/artigo/novo">
+    <app-icons icon="plus-circle" marginText="right"></app-icons>
+    Novo Artigo
+  </app-button>
+</app-header>
+
+<div class="container">
+
+  <div class="row">
+
+    <aside class="col-md-4">
+      <app-filtro-artigos></app-filtro-artigos>
+    </aside>
+
+    <section class="col-md-8">
+      <div class="content_page">
+
+        <header>
+          <h2>Listagem de Artigos</h2>
+        </header>
+
+        <div [ngSwitch]="tipoFiltro">
+
+          <!-- RETORNO POR CATEGORIA, OU GERAL -->
+          <div class="content_page_body" *ngSwitchCase="'categoria'">
+            <p-table [value]="artigos" [paginator]="true" [rows]="4">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Titulo</th>
+                  <th>Autor</th>
+                  <th colspan="1"></th>
+                </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-artigo>
+                <tr>
+                  <td>{{ (artigo.titulo.length > 25) ? (artigo.titulo | slice:0:25)+'..' : (artigo.titulo) }}</td>
+                  <td>{{artigo.autor}}</td>
+                  <td class="text-center">
+                    <a [routerLink]="['/artigo', artigo.id, 'editar']" class="btn btn-info btn-sm">
+                      <app-icons icon="pencil" marginText="right"></app-icons>
+                      Editar
+                    </a>
+
+                    <a [routerLink]="['/artigo', artigo.id]" class="btn btn-success btn-sm">
+                      <app-icons icon="eye" marginText="right"></app-icons>
+                      Visualizar
+                    </a>
+                  </td>
+                </tr>
+
+              </ng-template>
+            </p-table>
+          </div>
+          <!-- END content_page -->
+
+          <!-- RETORNO POR TITULO -->
+          <div class="content_page_body" *ngSwitchCase="'titulo'">
+            <p-table [value]="artigos | filtroTitulo : searchText" [paginator]="true" [rows]="4">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Titulo</th>
+                  <th>Autor</th>
+                  <th colspan="1"></th>
+                </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-artigo>
+                <tr>
+                  <td>{{ (artigo.titulo.length>25) ? (artigo.titulo | slice:0:25)+'..' : (artigo.titulo) }}</td>
+                  <td>{{artigo.autor}}</td>
+                  <td class="text-center">
+                    <a [routerLink]="['/artigo', artigo.id, 'editar']" class="btn btn-info btn-sm">
+                      <app-icons icon="pencil" marginText="right"></app-icons>
+                      Editar
+                    </a>
+
+                    <a [routerLink]="['/artigo', artigo.id]" class="btn btn-success btn-sm">
+                      <app-icons icon="eye" marginText="right"></app-icons>
+                      Visualizar
+                    </a>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+          <!-- END content_page -->
+
+          <!-- RETORNO POR AUTOR -->
+          <div class="content_page_body" *ngSwitchCase="'autor'">
+            <p-table [value]="artigos | filtroAutor : searchText" [paginator]="true" [rows]="4">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Titulo</th>
+                  <th>Autor</th>
+                  <th colspan="1"></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-artigo>
+                <tr>
+                  <td>{{ (artigo.titulo.length>25) ? (artigo.titulo | slice:0:25)+'..' : (artigo.titulo) }}</td>
+                  <td>{{artigo.autor}}</td>
+                  <td class="text-center">
+                    <a [routerLink]="['/artigo', artigo.id, 'editar']" class="btn btn-info btn-sm">
+                      <app-icons icon="pencil" marginText="right"></app-icons>
+                      Editar
+                    </a>
+
+                    <a [routerLink]="['/artigo', artigo.id]" class="btn btn-success btn-sm">
+                      <app-icons icon="eye" marginText="right"></app-icons>
+                      Visualizar
+                    </a>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+          <!-- END content_page -->
+
+            <!-- RETORNO POR CATEGORIA, OU GERAL -->
+            <div class="content_page_body" *ngSwitchDefault>
+              <p-table [value]="artigos" [paginator]="true" [rows]="4">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th colspan="1"></th>
+                  </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-artigo>
+                  <tr>
+                    <td>{{ (artigo.titulo.length>25) ? (artigo.titulo | slice:0:25)+'..' : (artigo.titulo) }}</td>
+                    <td>{{artigo.autor}}</td>
+                    <td class="text-center">
+                      <a [routerLink]="['/artigo', artigo.id, 'editar']" class="btn btn-info btn-sm">
+                        <app-icons icon="pencil" marginText="right"></app-icons>
+                        Editar
+                      </a>
+
+                      <a [routerLink]="['/artigo', artigo.id]" class="btn btn-success btn-sm">
+                        <app-icons icon="eye" marginText="right"></app-icons>
+                        Visualizar
+                      </a>
+                    </td>
+                  </tr>
+
+                </ng-template>
+              </p-table>
+            </div>
+            <!-- END content_page -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- END row -->
+  </div>
+
+</div>

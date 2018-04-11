@@ -2,6 +2,7 @@ import { MessageService } from './../../services/message.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArtigosService } from './../../services/artigos.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { MockNgModuleResolver } from '@angular/compiler/testing';
 
 @Component({
   selector: 'app-novo-comentario',
@@ -10,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NovoComentarioComponent implements OnInit {
 
-  artigo: any;
+  artigo: any
 
   comentario = {
     id: null,
@@ -38,10 +39,23 @@ export class NovoComentarioComponent implements OnInit {
 
   getArtigo(id) {
     this.artigoService.find(id)
-      .subscribe(data => this.artigo = data);
+      .subscribe((data) => {
+        if (!data['comentarios']) {
+          data['comentarios'] = [];
+        }
+        this.artigo = data
+      });
   }
 
   saveComentario() {
+
+    let tamanhoComentarios = this.artigoService.sizeReturn(this.artigo.comentarios)
+
+    // VERIFICA SE EXISTE ITENS EM COMENTÁRIOS
+    if (tamanhoComentarios === 0) {
+      this.comentario['id'] = 1;
+      return;
+    }
 
     this.artigo.comentarios.push(this.comentario);
 
@@ -54,7 +68,7 @@ export class NovoComentarioComponent implements OnInit {
           location.reload();
         }, 1800);
       });
-  }
 
+  }
 
 }

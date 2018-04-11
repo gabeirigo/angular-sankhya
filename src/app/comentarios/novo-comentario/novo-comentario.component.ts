@@ -1,6 +1,7 @@
+import { MessageService } from './../../services/message.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArtigosService } from './../../services/artigos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-novo-comentario',
@@ -9,38 +10,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NovoComentarioComponent implements OnInit {
 
-  artigoId = null;
-  comentarios:  {
+  artigo: any;
+
+  comentario = {
     id: null,
     autor: '',
     texto: ''
   }
 
+  message = null;
+  colorMessage = null;
 
   constructor(
     private artigoService: ArtigosService,
+    private messageService: MessageService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
 
-    // Retorna os parâmetros em forma de objeto
     this.route.params.subscribe(params => {
-      // Faz a verificação se existe dentro do objeto o parâmetro id
-      // Se existir, passa o id como parametro para a função find() do ArtigoService
       if (params.hasOwnProperty('id')) {
-        this.artigoService.find(+params['id'])
-          .subscribe(data => this.artigoId = +params['id']);
+        this.getArtigo(+params['id']);
       }
     });
   }
 
+  getArtigo(id) {
+    this.artigoService.find(id)
+      .subscribe(data => this.artigo = data);
+  }
+
   saveComentario() {
-    this.artigoService.saveComentario(this.artigoId, this.comentarios)
+
+    this.artigo.comentarios.push(this.comentario);
+
+    this.artigoService.save(this.artigo)
       .subscribe(() => {
-        //this.messageService.message = "Artigo salvo com sucesso";
-        location.reload();
+        this.message = "Comentário enviado!";
+        this.colorMessage = "success";
+
+        setTimeout(() => {
+          location.reload();
+        }, 1800);
       });
   }
+
 
 }

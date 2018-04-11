@@ -1,14 +1,20 @@
+<app-alert *ngIf="message" color="{{colorMessage}}">{{message}}</app-alert>
+
 <form class="form_novo_comentario" (submit)="saveComentario()">
   <div class="form-group">
     <label for="comentario">Deixe seu comentário aqui embaixo!</label>
-    <input id="comentario" type="text" pInputText placeholder="Escreva aqui seu comentário!" ([ngModel])="comentarios.texto"
-      name="texto" />
+    <textarea [rows]="2" id="comentario" type="text" pInputText placeholder="Escreva aqui seu comentário!" [(ngModel)]="comentario.texto"
+      name="texto" required ></textarea>
   </div>
 
+  {{texto}}
+
+  {{autor}}
+
   <div class="form-group">
-    <label for="comentario">Informe seu nome para comentar!</label>
-    <input id="comentario" type="text" pInputText placeholder="Escreva aqui seu comentário!" ([ngModel])="comentarios.autor"
-      name="autor" />
+    <label for="autor">Informe seu nome para comentar!</label>
+    <input id="autor" type="text" pInputText placeholder="Escreva aqui seu comentário!" [(ngModel)]="comentario.autor"
+    name="autor" required />
   </div>
 
   <div class="d-flex justify-content-end">

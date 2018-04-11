@@ -54,11 +54,11 @@ export class NovoComentarioComponent implements OnInit {
     // VERIFICA SE EXISTE ITENS EM COMENTÁRIOS
     if (tamanhoComentarios === 0) {
       this.comentario['id'] = 1;
-      return;
+      this.artigo.comentarios.push(this.comentario);
+    } else {
+      this.artigo.comentarios.push(this.comentario);
     }
-
-    this.artigo.comentarios.push(this.comentario);
-
+    
     this.artigoService.save(this.artigo)
       .subscribe(() => {
         this.message = "Comentário enviado!";
